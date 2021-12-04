@@ -1,5 +1,7 @@
 package com.remotetasks;
 
+import androidx.annotation.NonNull;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ public class TaskManager {
     private LocalDateTime mStartTime;
     private LocalDateTime mEndTime;
     private Duration mExtensionTime;
+    private Status mStatus;
 
     @Override
     public boolean equals(Object o) {
@@ -29,10 +32,43 @@ public class TaskManager {
         return Objects.hash(mTaskMgrID);
     }
 
+    public void grantReward(Child c) {
+        mReward.grantReward(c);
+    }
+
     public Status getStatus() {
         //dummy codes, will be implemented soon!
         Status currentStatus = Status.COMPLETED;
         return currentStatus;
+    }
+
+    public void setStatus(Status status) {
+        mStatus = status;
+    }
+
+    public void addChild(Child c) {
+        mListOfChild.add(c);
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        mStartTime = startTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        mEndTime = endTime;
+    }
+
+    public void setExtensionTime(Duration extensionTime) {
+        mExtensionTime = extensionTime;
+    }
+
+    public void addChild(Child... children) {
+        if (mListOfChild == null) {
+            mListOfChild = new ArrayList<>();
+        }
+        for (Child c : children) {
+            mListOfChild.add(c);
+        }
     }
 
     private TaskManager(TaskManagerBuilder builder) {
@@ -67,6 +103,7 @@ public class TaskManager {
         }
 
         public TaskManagerBuilder addChildren(Child... children) {
+            mListOfChild = new ArrayList<>();
             for (Child child : children) {
                 this.mListOfChild.add(child);
             }
