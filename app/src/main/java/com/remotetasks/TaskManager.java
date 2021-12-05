@@ -42,12 +42,8 @@ public class TaskManager {
         return currentStatus;
     }
 
-    public void setStatus(Status status) {
+    private void setStatus(Status status) {
         mStatus = status;
-    }
-
-    public void addChild(Child c) {
-        mListOfChild.add(c);
     }
 
     public void setStartTime(LocalDateTime startTime) {
