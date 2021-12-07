@@ -28,7 +28,7 @@ public class Parent extends User {
     {
         for(int x = 0 ; x < children.size() ; x++)
         {
-            if(children.get(x) == child){children.remove(x);break;}
+            if(children.get(x).equals(child)){children.remove(x);break;}
         }
 
     }
