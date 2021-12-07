@@ -6,9 +6,9 @@ public class Parent extends User {
     private List<Child> children = new ArrayList<Child>();
     private List<TaskManager> taskList = new ArrayList<TaskManager>();
 
-    public Parent()
+    public Parent(String name)
     {
-        super();
+        super(name);
     }
     /**
      * add child to parent's child list
@@ -61,7 +61,7 @@ public class Parent extends User {
      *
      * @param ID ID of child to be located
      */
-    public Child getChild(int ID)
+    public Child getChild(String ID)
     {
         for(int x = 0 ; x < children.size() ; x++)
         {

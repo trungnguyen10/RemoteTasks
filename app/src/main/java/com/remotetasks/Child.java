@@ -8,16 +8,17 @@ public class Child extends User
     private List<Parent> parents = new ArrayList<Parent>();
     private List<TaskManager> taskList = new ArrayList<TaskManager>();
 
-    public Child()
+    public Child(String name)
     {
-        super();
+        super(name);
+        this.ST = new ScreenTime(0);
     }
 
     /**
      * Getter method for child object ID
      */
 
-    public int getID()
+    public String getID()
     {
         return this.getUserID();
     }
