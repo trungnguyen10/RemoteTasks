@@ -18,4 +18,9 @@ public class User {
     public int hashCode() {
         return Objects.hash(userID);
     }
+
+    public int getUserID()
+    {
+        return this.userID;
+    }
 }

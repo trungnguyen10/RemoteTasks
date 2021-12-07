@@ -58,6 +58,11 @@ public class TaskManager {
         mExtensionTime = extensionTime;
     }
 
+    public int getmTaskMgrID()
+    {
+        return this.mTaskMgrID;
+    }
+
     public void addChild(Child... children) {
         if (mListOfChild == null) {
             mListOfChild = new ArrayList<>();
