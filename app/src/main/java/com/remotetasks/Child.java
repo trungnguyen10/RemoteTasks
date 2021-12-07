@@ -83,7 +83,7 @@ public class Child extends User
     {
         for(int x = 0 ; x < taskList.size() ; x++)
         {
-            if(taskList.get(x).getmTaskMgrID() == ID) return taskList.get(x);
+            if(taskList.get(x).getTaskMgrID() == ID) return taskList.get(x);
         }
         return null;
     }

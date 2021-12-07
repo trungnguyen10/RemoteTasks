@@ -29,6 +29,11 @@ public class TaskManager {
         return Objects.hash(mTaskMgrID);
     }
 
+    public int getTaskMgrID()
+    {
+        return this.mTaskMgrID;
+    }
+
     public void grantReward(Child c) {
         mReward.grantReward(c);
     }
