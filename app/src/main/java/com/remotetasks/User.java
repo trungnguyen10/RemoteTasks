@@ -14,7 +14,7 @@ public class User {
         userId += String.valueOf(idNumber);
     }
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
@@ -22,7 +22,7 @@ public class User {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hash(userID);
     }
 
