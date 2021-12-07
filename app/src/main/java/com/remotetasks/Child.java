@@ -33,7 +33,7 @@ public class Child extends User
         boolean isParent = false;
         for(int x = 0 ; x < parents.size() ; x++)
         {
-            if(parents.get(x).equals(p)){isParent = true;}
+            if(parents.get(x).equals(p)){isParent = true;break;}
         }
 
         return isParent;

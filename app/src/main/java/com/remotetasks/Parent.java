@@ -6,10 +6,7 @@ public class Parent extends User {
     private List<Child> children = new ArrayList<Child>();
     private List<TaskManager> taskList = new ArrayList<TaskManager>();
 
-    public Parent(String name)
-    {
-        super(name);
-    }
+    public Parent(String name){super(name);}
     /**
      * add child to parent's child list
      *
@@ -42,7 +39,7 @@ public class Parent extends User {
         boolean isChild = false;
         for(int x = 0 ; x < children.size() ; x++)
         {
-            if(children.get(x) == c){isChild = true;}
+            if(children.get(x) == c){isChild = true;break;}
         }
 
         return isChild;
@@ -65,10 +62,7 @@ public class Parent extends User {
     {
         for(int x = 0 ; x < children.size() ; x++)
         {
-            if(children.get(x).getID() == ID)
-            {
-                return children.get(x);
-            }
+            if(children.get(x).getID() == ID) return children.get(x);
         }
         return null;
 

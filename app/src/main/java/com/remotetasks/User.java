@@ -9,9 +9,7 @@ public class User {
     public User(String name)
     {
         this.name = name;
-        String userId = name;
-        int idNumber = (int)((Math.random() * (99999 - 10000)) + 10000);
-        userId += String.valueOf(idNumber);
+        this.userID = name + String.valueOf(IDGenerator.generateUserID());
     }
     @Override
     public final boolean equals(Object o) {
