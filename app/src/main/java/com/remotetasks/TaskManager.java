@@ -1,8 +1,5 @@
 package com.remotetasks;
 
-import androidx.annotation.NonNull;
-
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -16,8 +13,8 @@ public class TaskManager {
     private IReward mReward;
     private LocalDateTime mStartTime;
     private LocalDateTime mEndTime;
-    private Duration mExtensionTime;
-    private Status mStatus;
+    private int mExtensionHours;
+    private Status mStatus = Status.IN_PROCESS;
 
     @Override
     public boolean equals(Object o) {
@@ -37,9 +34,19 @@ public class TaskManager {
     }
 
     public Status getStatus() {
-        //dummy codes, will be implemented soon!
-        Status currentStatus = Status.COMPLETED;
-        return currentStatus;
+        LocalDateTime rightNow = LocalDateTime.now();
+        if (mStatus == Status.IN_PROCESS && rightNow.isAfter(mEndTime)){
+            mStatus = Status.FAILED;
+        }
+        return mStatus;
+    }
+
+    public Parent getParent() {
+        return mParent;
+    }
+
+    public ArrayList<Child> getListOfChild() {
+        return mListOfChild;
     }
 
     private void setStatus(Status status) {
@@ -54,16 +61,33 @@ public class TaskManager {
         mEndTime = endTime;
     }
 
-    public void setExtensionTime(Duration extensionTime) {
-        mExtensionTime = extensionTime;
+    public void requestExtension(int hoursToExtend) {
+        LocalDateTime rightNow = LocalDateTime.now();
+        LocalDateTime extendedTime = mEndTime.plusHours(hoursToExtend);
+        if (rightNow.isBefore(extendedTime)) {
+            mExtensionHours = hoursToExtend;
+            mStatus = Status.PENDING_FOR_EXTENSION;
+        }
     }
 
-    public int getmTaskMgrID()
-    {
-        return this.mTaskMgrID;
+    public void approveExtension() {
+        mEndTime = mEndTime.plusHours(mExtensionHours);
+        mExtensionHours = 0;
+        mStatus = Status.IN_PROCESS;
     }
 
-    public void addChild(Child... children) {
+    public void submitTask(){
+        LocalDateTime rightNow = LocalDateTime.now();
+        if(rightNow.isBefore(mEndTime)) {
+            mStatus = Status.PENDING_FOR_COMPLETION;
+        }
+    }
+
+    public void approveTask() {
+        mStatus = Status.COMPLETED;
+    }
+
+    public void addChildren(Child... children) {
         if (mListOfChild == null) {
             mListOfChild = new ArrayList<>();
         }
@@ -80,7 +104,7 @@ public class TaskManager {
         this.mReward = builder.mReward;
         this.mStartTime = builder.mStartTime;
         this.mEndTime = builder.mEndTime;
-        this.mExtensionTime = builder.mExtensionTime;
+        this.mExtensionHours = builder.mExtensionHours;
     }
 
     public static class TaskManagerBuilder {
@@ -91,7 +115,7 @@ public class TaskManager {
         private IReward mReward;
         private LocalDateTime mStartTime;
         private LocalDateTime mEndTime;
-        private Duration mExtensionTime = Duration.ofHours(0);
+        private int mExtensionHours = 0;
 
         public TaskManagerBuilder addTaskMgrID(int id) {
             this.mTaskMgrID = id;
