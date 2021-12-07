@@ -3,7 +3,7 @@ import java.util.*;
 import java.time.Duration;
 public class Child extends User
 {
-    public static ScreenTime ST;
+    private ScreenTime ST;
 
     private List<Parent> parents = new ArrayList<Parent>();
     private List<TaskManager> taskList = new ArrayList<TaskManager>();
