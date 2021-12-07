@@ -122,8 +122,8 @@ public class TaskManager {
         private LocalDateTime mEndTime;
         private int mExtensionHours = 0;
 
-        public TaskManagerBuilder addTaskMgrID(int id) {
-            this.mTaskMgrID = id;
+        public TaskManagerBuilder addTaskMgrID() {
+            this.mTaskMgrID = IDGenerator.generateTaskID();
             return this;
         }
 
