@@ -2,13 +2,17 @@ package com.remotetasks;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+/**
+ * TaskManager represents a task and its associated parents, children, starting and ending time, the reward on completion
+ */
 public class TaskManager {
 
     private int mTaskMgrID;
     private Parent mParent;
-    private ArrayList<Child> mListOfChild;
+    private List<Child> mListOfChild;
     private Task mTask;
     private IReward mReward;
     private LocalDateTime mStartTime;
@@ -38,20 +42,40 @@ public class TaskManager {
         mReward.grantReward(c);
     }
 
+    public Parent getParent() {
+        return mParent;
+    }
+
+    public List<Child> getListOfChild() {
+        return mListOfChild;
+    }
+
+    public Task getTask() {
+        return mTask;
+    }
+
+    public IReward getReward() {
+        return mReward;
+    }
+
+    public LocalDateTime getStartTime() {
+        return mStartTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return mEndTime;
+    }
+
+    public int getExtensionHours() {
+        return mExtensionHours;
+    }
+
     public Status getStatus() {
         LocalDateTime rightNow = LocalDateTime.now();
         if (mStatus == Status.IN_PROCESS && rightNow.isAfter(mEndTime)){
             mStatus = Status.FAILED;
         }
         return mStatus;
-    }
-
-    public Parent getParent() {
-        return mParent;
-    }
-
-    public ArrayList<Child> getListOfChild() {
-        return mListOfChild;
     }
 
     private void setStatus(Status status) {
@@ -101,7 +125,7 @@ public class TaskManager {
         }
     }
 
-    private TaskManager(TaskManagerBuilder builder) {
+    private TaskManager(Builder builder) {
         this.mTaskMgrID = builder.mTaskMgrID;
         this.mParent = builder.mParent;
         this.mListOfChild = builder.mListOfChild;
@@ -112,7 +136,7 @@ public class TaskManager {
         this.mExtensionHours = builder.mExtensionHours;
     }
 
-    public static class TaskManagerBuilder {
+    public static class Builder {
         private int mTaskMgrID;
         private Parent mParent;
         private ArrayList<Child> mListOfChild;
@@ -122,17 +146,17 @@ public class TaskManager {
         private LocalDateTime mEndTime;
         private int mExtensionHours = 0;
 
-        public TaskManagerBuilder addTaskMgrID() {
+        public Builder addTaskMgrID() {
             this.mTaskMgrID = IDGenerator.generateTaskID();
             return this;
         }
 
-        public TaskManagerBuilder addParent(Parent p) {
+        public Builder addParent(Parent p) {
             this.mParent = p;
             return this;
         }
 
-        public TaskManagerBuilder addChildren(Child... children) {
+        public Builder addChildren(Child... children) {
             mListOfChild = new ArrayList<>();
             for (Child child : children) {
                 this.mListOfChild.add(child);
@@ -140,22 +164,22 @@ public class TaskManager {
             return this;
         }
 
-        public TaskManagerBuilder addTask(Task t) {
+        public Builder addTask(Task t) {
             this.mTask = t;
             return this;
         }
 
-        public TaskManagerBuilder addReward(IReward reward) {
+        public Builder addReward(IReward reward) {
             this.mReward = reward;
             return this;
         }
 
-        public TaskManagerBuilder addStartTime(LocalDateTime startTime) {
+        public Builder addStartTime(LocalDateTime startTime) {
             this.mStartTime = startTime;
             return this;
         }
 
-        public TaskManagerBuilder addEndTime(LocalDateTime endTime) {
+        public Builder addEndTime(LocalDateTime endTime) {
             this.mEndTime = endTime;
             return this;
         }

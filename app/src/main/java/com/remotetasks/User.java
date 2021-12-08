@@ -28,4 +28,6 @@ public class User {
     {
         return this.userID;
     }
+
+    public String getName() { return this.name;}
 }

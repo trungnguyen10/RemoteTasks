@@ -87,4 +87,11 @@ public class Child extends User
         }
         return null;
     }
+
+    public int countTask(){
+        return this.taskList.size();
+    }
+    public List<TaskManager> getTaskList() {
+        return taskList;
+    }
 }
