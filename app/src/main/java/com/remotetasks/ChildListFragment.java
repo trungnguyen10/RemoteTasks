@@ -36,7 +36,7 @@ public class ChildListFragment extends Fragment {
     }
 
     private void updateUI() {
-        Parent parent = Parent.demoParent();
+        Parent parent = DemoParent.getInstance().getParent();
         List<Child> children = parent.getChildren();
         mChildAdapter = new ChildAdapter(children);
         mRecyclerView.setAdapter(mChildAdapter);
