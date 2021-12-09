@@ -11,11 +11,12 @@
         android:theme="@style/Theme.RemoteTasks">
         <activity
             android:name=".AssignTask2Activity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".AssignTask1Activity"
-            android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:exported="false"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true">

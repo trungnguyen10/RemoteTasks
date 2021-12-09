@@ -67,7 +67,7 @@ public class Parent extends User {
      */
     public Child getChild(String ID) {
         for (int x = 0; x < children.size(); x++) {
-            if (children.get(x).getID() == ID) return children.get(x);
+            if (children.get(x).getID().equals(ID)) return children.get(x);
         }
         return null;
     }

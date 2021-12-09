@@ -51,9 +51,8 @@ public class AssignTask1Activity extends AppCompatActivity {
                                                    Child child = (Child) dropdown.getItemAtPosition(dropdown.getSelectedItemPosition());
                                                    intent.putExtra(KEY_USER_ID, child.getUserID());
                                                    startActivity(intent);
-
+                                                   finish();
                                                }
-
                                            }
         );
     }

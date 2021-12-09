@@ -73,7 +73,7 @@ public class AssignTask2Activity extends AppCompatActivity {
                 child.addTask(taskManager);
                 parent.updateChild(child);
                 DemoParent.getInstance().update(parent);
-                Intent intent = new Intent(AssignTask2Activity.this, MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
