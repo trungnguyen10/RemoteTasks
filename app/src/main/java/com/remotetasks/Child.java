@@ -88,6 +88,13 @@ public class Child extends User
         return null;
     }
 
+    public String toString(){
+        return getName();
+    }
+
+
+
+
     public int countTask(){
         return this.taskList.size();
     }

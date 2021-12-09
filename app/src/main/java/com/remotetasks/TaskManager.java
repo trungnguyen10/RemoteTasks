@@ -1,5 +1,6 @@
 package com.remotetasks;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,9 @@ public class TaskManager {
     private List<Child> mListOfChild;
     private Task mTask;
     private IReward mReward;
-    private LocalDateTime mStartTime;
-    private LocalDateTime mEndTime;
-    private int mExtensionHours;
+    private LocalDate mStartTime;
+    private LocalDate mEndTime;
+    private int mExtensionDays;
     private Status mStatus = Status.IN_PROCESS;
 
     @Override
@@ -58,20 +59,20 @@ public class TaskManager {
         return mReward;
     }
 
-    public LocalDateTime getStartTime() {
+    public LocalDate getStartTime() {
         return mStartTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public LocalDate getEndTime() {
         return mEndTime;
     }
 
     public int getExtensionHours() {
-        return mExtensionHours;
+        return mExtensionDays;
     }
 
     public Status getStatus() {
-        LocalDateTime rightNow = LocalDateTime.now();
+        LocalDate rightNow = LocalDate.now();
         if (mStatus == Status.IN_PROCESS && rightNow.isAfter(mEndTime)){
             mStatus = Status.FAILED;
         }
@@ -82,31 +83,31 @@ public class TaskManager {
         mStatus = status;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(LocalDate startTime) {
         mStartTime = startTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(LocalDate endTime) {
         mEndTime = endTime;
     }
 
-    public void requestExtension(int hoursToExtend) {
-        LocalDateTime rightNow = LocalDateTime.now();
-        LocalDateTime extendedTime = mEndTime.plusHours(hoursToExtend);
+    public void requestExtension(int daysToExtend) {
+        LocalDate rightNow = LocalDate.now();
+        LocalDate extendedTime = mEndTime.plusDays(daysToExtend);
         if (rightNow.isBefore(extendedTime)) {
-            mExtensionHours = hoursToExtend;
+            mExtensionDays = daysToExtend;
             mStatus = Status.PENDING_FOR_EXTENSION;
         }
     }
 
     public void approveExtension() {
-        mEndTime = mEndTime.plusHours(mExtensionHours);
-        mExtensionHours = 0;
+        mEndTime = mEndTime.plusDays(mExtensionDays);
+        mExtensionDays = 0;
         mStatus = Status.IN_PROCESS;
     }
 
     public void submitTask(){
-        LocalDateTime rightNow = LocalDateTime.now();
+        LocalDate rightNow = LocalDate.now();
         if(rightNow.isBefore(mEndTime)) {
             mStatus = Status.PENDING_FOR_COMPLETION;
         }
@@ -133,7 +134,7 @@ public class TaskManager {
         this.mReward = builder.mReward;
         this.mStartTime = builder.mStartTime;
         this.mEndTime = builder.mEndTime;
-        this.mExtensionHours = builder.mExtensionHours;
+        this.mExtensionDays = builder.mExtensionHours;
     }
 
     public static class Builder {
@@ -142,8 +143,8 @@ public class TaskManager {
         private ArrayList<Child> mListOfChild;
         private Task mTask;
         private IReward mReward;
-        private LocalDateTime mStartTime;
-        private LocalDateTime mEndTime;
+        private LocalDate mStartTime;
+        private LocalDate mEndTime;
         private int mExtensionHours = 0;
 
         public Builder addTaskMgrID() {
@@ -174,12 +175,12 @@ public class TaskManager {
             return this;
         }
 
-        public Builder addStartTime(LocalDateTime startTime) {
+        public Builder addStartTime(LocalDate startTime) {
             this.mStartTime = startTime;
             return this;
         }
 
-        public Builder addEndTime(LocalDateTime endTime) {
+        public Builder addEndTime(LocalDate endTime) {
             this.mEndTime = endTime;
             return this;
         }

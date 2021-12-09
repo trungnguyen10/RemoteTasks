@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/yourlayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding= "20dp"
+    tools:context=".AssignTask1Activity"
+    android:orientation="vertical">
+
+
+    <Spinner
+        android:id="@+id/spinnerPickChild"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        />
+
+    <Button
+        android:id="@+id/pickChildButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Child" />
+
+
+</LinearLayout>
