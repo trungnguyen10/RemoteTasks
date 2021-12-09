@@ -18,6 +18,7 @@ import org.w3c.dom.Text;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.Calendar;
+import java.util.Date;
 
 //ACTIVITY TO CREATE TASK TO ASSIGN
 public class AssignTask2Activity extends AppCompatActivity {
@@ -82,19 +83,27 @@ public class AssignTask2Activity extends AppCompatActivity {
 
     public void selectDatePicker(){
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(1);
-        int month = calendar.get(2);
-        int day = calendar.get(3);
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
 
         DatePickerDialog datePickerDialog = new DatePickerDialog((Context) this, (DatePickerDialog.OnDateSetListener)(new DatePickerDialog.OnDateSetListener(){
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                TextView textView = findViewById(R.id.textView);
-                textView.setText(month + 1 + " " + dayOfMonth + " " + year);
-                endTime = LocalDate.of(year, month + 1, dayOfMonth);
+            public void onDateSet(DatePicker view, int yearSelected, int monthSelected, int dayOfMonthSelected) {
+                endTime = LocalDate.of(yearSelected, monthSelected + 1, dayOfMonthSelected);
             }
         }), year, month, day);
+
+        datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis());
         datePickerDialog.show();
+    }
+
+
+
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

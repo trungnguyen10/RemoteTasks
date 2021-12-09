@@ -1,6 +1,7 @@
 package com.remotetasks;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,7 @@ public class ChildListFragment extends Fragment {
     private class ChildViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Child mChild;
         private TextView mChildName;
-        private TextView mNumberOfTask;
+        private TextView mTaskList;
 
         public ChildViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_child, parent, false));
@@ -54,13 +55,23 @@ public class ChildListFragment extends Fragment {
             itemView.setOnClickListener(this);
 
             mChildName = (TextView) itemView.findViewById(R.id.child_name);
-            mNumberOfTask = (TextView) itemView.findViewById(R.id.number_of_task);
+            mTaskList = (TextView) itemView.findViewById(R.id.list_of_task);
+
+            mTaskList.setSingleLine(false);
         }
 
         public void bind(Child child) {
             mChild = child;
             mChildName.setText(mChild.getName());
-            mNumberOfTask.setText("Number of Tasks: " + String.valueOf(mChild.countTask()));
+            for (TaskManager taskManager: mChild.getTaskList()){
+                if (taskManager.getTask() != null){
+                    mTaskList.append(taskManager.getTask().getTaskName() + "   ");
+                    if (taskManager.getEndTime() != null){
+                        mTaskList.append("Due: " + taskManager.getEndTime().getMonthValue() + "-" + taskManager.getEndTime().getDayOfMonth() + "-" + taskManager.getEndTime().getYear());
+                    }
+                    mTaskList.append("\n");
+                }
+            }
         }
 
         @Override

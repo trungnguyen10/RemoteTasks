@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".AssignTask2Activity"
     android:orientation="vertical"
-    android:padding = "20dp">
+    android:padding = "20dp"
+    android:background="@color/backgroundColor">
 
 
 
@@ -32,7 +33,7 @@
         android:id="@+id/selectDatePicker"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/textColor"
         android:text="Select Due Date"
         android:textColor="@color/white" />
 
@@ -42,12 +43,5 @@
         android:layout_height="wrap_content"
         android:text="Create Task"
         android:textStyle = "bold"/>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
 
 </LinearLayout>

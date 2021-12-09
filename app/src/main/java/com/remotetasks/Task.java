@@ -24,4 +24,7 @@ public class Task {
     public void setTaskGoal(Goal taskGoal) {
         this.taskGoal = taskGoal;
     }
-}
+
+
+    }
+

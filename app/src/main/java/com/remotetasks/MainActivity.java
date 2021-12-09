@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private Button mAssignTaskButton;
+    private Button mCreateChildButton;
     private static final String TAG = "MainActivity";
 
     public void loadFragment(Fragment fragment) {
@@ -33,31 +35,23 @@ public class MainActivity extends AppCompatActivity {
         mAssignTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Parent parent = DemoParent.getInstance().getParent();
-//                Child child = parent.getChildren().get(0);
-//                TaskManager taskManager = new TaskManager.Builder()
-//                        .addParent(parent)
-//                        .addChildren(child)
-//                        .addTask(new Task("Do nothing", new Goal("nothing", "no desc")))
-//                        .build();
-//                child.addTask(taskManager);
-//                parent.updateChild(child);
-//                DemoParent.getInstance().update(parent);
-//
-//                loadFragment(new ChildListFragment());
-                //MainActivity.this.startActivity(new Intent((Context)MainActivity.this, AssignTask1.class));
-
-                //Intent intent = new AssignTask1Activity().intent;
-                openActivity1();
-
-               // MainActivity.this.startActivity(intent);
+                openActivity(AssignTask1Activity.class);
             }
         }
 
 
+        );
 
+        mCreateChildButton = (Button) findViewById(R.id.button_create_child);
+        mCreateChildButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity(CreateChildActivity.class);
+            }
+        }
         );
     }
+
 
     @Override
     protected void onStart() {
@@ -92,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void openActivity1(){
-        Intent intent = new Intent (this, AssignTask1Activity.class);
+    public void openActivity(Class activity){
+        Intent intent = new Intent (this, activity);
         startActivity(intent);
-        finish();
+        //finish();
 
     }
 }

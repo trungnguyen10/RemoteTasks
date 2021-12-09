@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/backgroundColor">
     
     <FrameLayout
         android:id="@+id/frameLayout_for_fragment"
@@ -16,14 +17,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:text="Assign Task"/>
+        android:text="Assign Task"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/button_create_child"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
-        android:text="Create Child"/>
+        android:text="Create Child"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"/>
 
 
 </FrameLayout>
