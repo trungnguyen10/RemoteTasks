@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -30,14 +31,34 @@ public class ParentUnitTest {
     }
     @Test
     public void getChildren(){
+
         Parent parent = new Parent("Tom");
         Child child1 = new Child("John");
         Child child2 = new Child("Bob");
         List<Child> expectedChildren = new ArrayList<>();
         expectedChildren.add(child1);
+        expectedChildren.add(child2);
 
+        parent.addChild(child1);
+        parent.addChild(child2);
 
+        assertEquals(expectedChildren, parent.getChildren());
+    }
 
+    @Test
+    public void updateChild(){
+        Parent parent = new Parent ("Tom");
+        Child child = new Child("John");
+
+        parent.addChild(child);
+
+        Task task = new Task("Test Task", new Goal("Task Goal", "Test Description"));
+        TaskManager taskManager = new TaskManager.Builder().addParent(parent).addChildren(child).addTask(task).addStartTime(LocalDate.now()).addEndTime(null).build();
+        child.addTask(taskManager);
+
+        parent.updateChild(child);
+
+        assertEquals(child, parent.getChild(child.getID()));
     }
 
 

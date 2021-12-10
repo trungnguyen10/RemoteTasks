@@ -3,6 +3,10 @@ package com.remotetasks;
 public class ScreenTimeReward implements IReward{
     private ScreenTime time;
 
+    public ScreenTimeReward(int hoursOfTime){
+        this.time = new ScreenTime(hoursOfTime);
+    }
+
     /**
      * reward screen time for task completion
      *
@@ -13,4 +17,5 @@ public class ScreenTimeReward implements IReward{
     {
         u.increaseScreenTime(time);
     }
+
 }
