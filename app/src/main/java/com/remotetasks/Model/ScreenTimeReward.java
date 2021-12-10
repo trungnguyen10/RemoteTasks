@@ -1,4 +1,4 @@
-package com.remotetasks;
+package com.remotetasks.Model;
 
 public class ScreenTimeReward implements IReward{
     private ScreenTime time;

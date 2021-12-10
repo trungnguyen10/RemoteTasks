@@ -1,4 +1,4 @@
-package com.remotetasks;
+package com.remotetasks.Model;
 
 public class IDGenerator {
     private static int userID = 0;

@@ -1,4 +1,4 @@
-package com.remotetasks;
+package com.remotetasks.Model;
 
 import java.util.Objects;
 
@@ -9,7 +9,7 @@ public class User {
     public User(String name)
     {
         this.name = name;
-        this.userID = name + String.valueOf(IDGenerator.generateUserID());
+        this.userID = name.toLowerCase().replace(" ","") + String.valueOf(IDGenerator.generateUserID());
     }
     @Override
     public final boolean equals(Object o) {

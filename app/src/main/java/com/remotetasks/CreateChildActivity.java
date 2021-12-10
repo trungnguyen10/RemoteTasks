@@ -1,7 +1,5 @@
 package com.remotetasks;
 
-import static com.remotetasks.Parent.demoParent;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.remotetasks.Model.Child;
+import com.remotetasks.Model.DemoParent;
+import com.remotetasks.Model.Parent;
 
 public class CreateChildActivity extends AppCompatActivity {
 

@@ -1,11 +1,9 @@
 package com.remotetasks;
 
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.animation.ChildrenAlphaProperty;
+import com.remotetasks.Model.Child;
+import com.remotetasks.Model.DemoParent;
+import com.remotetasks.Model.Parent;
+import com.remotetasks.Model.TaskManager;
 
 import java.util.List;
 

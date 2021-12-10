@@ -1,7 +1,5 @@
 package com.remotetasks;
 
-import static com.remotetasks.Parent.demoParent;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,14 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+import com.remotetasks.Model.Child;
+import com.remotetasks.Model.DemoParent;
+import com.remotetasks.Model.Parent;
 
 
 //ACTIVITY TO CHOOSE CHILD

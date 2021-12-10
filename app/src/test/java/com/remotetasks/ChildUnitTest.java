@@ -2,11 +2,14 @@ package com.remotetasks;
 
 import static org.junit.Assert.assertEquals;
 
+import com.remotetasks.Model.Child;
+import com.remotetasks.Model.Goal;
+import com.remotetasks.Model.Task;
+import com.remotetasks.Model.TaskManager;
+
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

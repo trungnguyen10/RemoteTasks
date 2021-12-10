@@ -1,9 +1,9 @@
-package com.remotetasks;
+package com.remotetasks.Model;
 import java.util.*;
-import java.time.Duration;
+
 public class Child extends User
 {
-    private ScreenTime ST;
+    private ScreenTime mScreenTime;
 
     private List<Parent> parents = new ArrayList<Parent>();
     private List<TaskManager> taskList = new ArrayList<TaskManager>();
@@ -11,7 +11,7 @@ public class Child extends User
     public Child(String name)
     {
         super(name);
-        this.ST = new ScreenTime(0);
+        this.mScreenTime = new ScreenTime(0);
     }
 
     /**
@@ -45,7 +45,7 @@ public class Child extends User
      */
     public void increaseScreenTime(ScreenTime increment)
     {
-        this.ST.increaseTime(increment);
+        this.mScreenTime.increaseTime(increment);
     }
     /**
      * Decrements screen time
@@ -54,7 +54,7 @@ public class Child extends User
      */
     public void decreaseScreenTime(ScreenTime decrement)
     {
-        this.ST.decreaseTime(decrement);
+        this.mScreenTime.decreaseTime(decrement);
     }
     /**
      * Set screen time given hours
@@ -63,7 +63,7 @@ public class Child extends User
      */
     public void setScreenTime(long hour)
     {
-        this.ST.setHour(hour);
+        this.mScreenTime.setHour(hour);
     }
     /**
      * add task object to tasklist
@@ -92,12 +92,10 @@ public class Child extends User
         return getName();
     }
 
-
-
-
     public int countTask(){
         return this.taskList.size();
     }
+
     public List<TaskManager> getTaskList() {
         return taskList;
     }

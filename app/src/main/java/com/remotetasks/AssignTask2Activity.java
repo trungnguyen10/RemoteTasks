@@ -11,14 +11,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.remotetasks.Model.Child;
+import com.remotetasks.Model.DemoParent;
+import com.remotetasks.Model.Goal;
+import com.remotetasks.Model.Parent;
+import com.remotetasks.Model.Task;
+import com.remotetasks.Model.TaskManager;
 
 import java.time.LocalDate;
-import java.time.Year;
 import java.util.Calendar;
-import java.util.Date;
 
 //ACTIVITY TO CREATE TASK TO ASSIGN
 public class AssignTask2Activity extends AppCompatActivity {

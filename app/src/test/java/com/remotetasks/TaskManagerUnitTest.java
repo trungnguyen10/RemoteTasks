@@ -2,6 +2,14 @@ package com.remotetasks;
 
 import static org.junit.Assert.assertEquals;
 
+import com.remotetasks.Model.Child;
+import com.remotetasks.Model.Goal;
+import com.remotetasks.Model.IReward;
+import com.remotetasks.Model.Parent;
+import com.remotetasks.Model.ScreenTimeReward;
+import com.remotetasks.Model.Task;
+import com.remotetasks.Model.TaskManager;
+
 import org.junit.Test;
 
 import java.time.LocalDate;
